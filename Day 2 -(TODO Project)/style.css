@@ -1,0 +1,94 @@
+body{
+    background-color: pink;
+    background-image: url("back.jpg");
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+ul{
+    list-style-type: none;
+}
+
+
+/* Main Container */
+#container {
+    margin-left: 82px;
+    margin-top: 34px;
+    align-self: center;
+    background-color: white;
+    height: 600px;
+    width: 1200px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+/* Header section */
+
+header{
+    padding: 20px;
+    background-color: green;
+    color: whitesmoke;
+    text-align: center;
+    height: 7%;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* nav-and-main section */
+#nav-and-main {
+    height: 77%;
+    width: 100%;
+}
+
+/* nav section */
+nav {
+    padding-left: 30px;
+    height: 96%;
+    width: 22.5%;
+    float: left;
+    margin: 10px;
+    margin-right: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+/* main section */
+main {
+    padding-left: 30px;
+    height: 96%;
+    width: 70%;
+    float: left;
+    margin: 10px;
+    margin-left: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+main h3{
+    margin-top:10px;
+    font-size: 24px;
+}
+
+main #todo-input{
+    width: 20%;
+    height: 30px;
+}
+
+main #todo-add{
+    margin-left: 5px;
+    width: 10%;
+    height: 30px;
+
+}
+
+/* Footer section */
+footer{
+    padding: 20px;
+    background-color: brown;
+    color: white;
+    text-align: center;
+    height: 3%;
+}
+
+
