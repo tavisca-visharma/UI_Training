@@ -5,30 +5,33 @@
         <link rel="stylesheet" type="text/css" href="css/Assignment_CSS.css">
     </head>
     <body>
-        <br/>
-        <br/>
         <div class="nav-bar">
             <table>
                 <tr>
                     <th class="active">Home</th>
                     <th>Alumni</th>
-                    <th>Trainings</th>
+                    <th class="dropdown">
+                        <div id="dropdown-btn">
+                            Trainings
+                            <img src="images/right.png" class="right" width = "11px" height="10px"/>
+                            <img src="images/down.png" class="down" width = "11px" height="10px"/>
+                        </div>
+                            <table class="dropdown-values">
+                                <tr><td><a href="#">HTML</a></td></tr>
+                                <tr><td><a href="#">CSS</a></td></tr>
+                                <tr><td><a href="#">JAVASCRIPT</a></td></tr>
+                                <tr><td><a href="#">JQUERY</a></td></tr>
+                            </table>
+                    </th>
                     <th>Contact</th>
                     <th>About Us</th>
+                    
                 </tr>
-                <div id ="last-nav-element">Logout</div>
             </table>
+            <div id ="last-nav-element" style="float: right; margin-top: -49px;">Logout</div>
         </div>
 
         <br/>
-        <div class="dropdown">
-            <input type="button" class = "dropdown-btn" value="Trainings"/>
-            <table class="dropdown-values">
-                <tr><td><a href="#">HTML</a></td></tr>
-                <tr><td><a href="#">CSS</a></td></tr>
-                <tr><td><a href="#">JAVASCRIPT</a></td></tr>
-                <tr><td><a href="#">JQUERY</a></td></tr>
-            </table>
-        </div>
+        
     </body>
 </html>
