@@ -1,19 +1,20 @@
-body{
+body {
     background-color: pink;
     background-image: url("back.jpg");
 }
 
-*{
+* {
     margin: 0px;
     padding: 0px;
 }
 
-ul{
+ul {
     list-style-type: none;
 }
 
 
 /* Main Container */
+
 #container {
     margin-left: 82px;
     margin-top: 34px;
@@ -22,12 +23,12 @@ ul{
     height: 600px;
     width: 1200px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 }
+
 
 /* Header section */
 
-header{
+header {
     padding: 20px;
     background-color: green;
     color: whitesmoke;
@@ -36,13 +37,17 @@ header{
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
+
 /* nav-and-main section */
+
 #nav-and-main {
     height: 77%;
     width: 100%;
 }
 
+
 /* nav section */
+
 nav {
     padding-left: 30px;
     height: 96%;
@@ -53,8 +58,41 @@ nav {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+li {
+    text-align: center;
+    width: 31%;
+    height: 10%;
+    border: 1px solid black;
+    margin-top: 5px;
+    padding: 0px 77px;
+    background-color: burlywood;
+    padding-top: 21px;
+}
+
+li:hover {
+    color: white;
+    background-color: brown;
+    cursor: pointer;
+    font-size: 20;
+}
+
+nav h3 {
+    padding: 20px;
+    padding-right: 41px;
+    text-align: center;
+}
+
+.nav-tabs {
+    display: none;
+}
+
+main#home {
+    display: inline;
+}
+
 
 /* main section */
+
 main {
     padding-left: 30px;
     height: 96%;
@@ -65,30 +103,42 @@ main {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-main h3{
-    margin-top:10px;
-    font-size: 24px;
+main h3 {
+    margin-top: 10px;
+    font-size: 25px;
+    margin-bottom: 10px;
 }
 
-main #todo-input{
+main #todo-input {
     width: 20%;
     height: 30px;
 }
 
-main #todo-add{
+main #todo-add {
     margin-left: 5px;
     width: 10%;
     height: 30px;
-
 }
 
+table {
+    width: 80%;
+    max-height: 77%;
+}
+
+th,
+td {
+    padding-left: 15%;
+    text-align: center;
+    padding-bottom: 3%;
+}
+
+
 /* Footer section */
-footer{
+
+footer {
     padding: 20px;
     background-color: brown;
     color: white;
     text-align: center;
     height: 3%;
 }
-
-

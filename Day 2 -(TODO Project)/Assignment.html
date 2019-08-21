@@ -14,26 +14,48 @@
             <nav>
                 <h3>Navigation</h3>
                 <ul>
-                    <li>Home</li>
-                    <li>User</li>
-                    <li>Department</li>
-                    <li>Batch</li>
+                    <li onclick="setView(this)">Home</li>
+                    <li onclick="setView(this)">Users</li>
+                    <li onclick="setView(this)">Department</li>
+                    <li onclick="setView(this)">Batch</li>
                 </ul>
             </nav>
 
-            <main>
+            <main id="home" class="nav-tabs">
                 <h3>List</h3>
-                <input type="text" id = "todo-input" placeholder="Enter Your TODO"/>
-                <input type="button" id = "todo-add" value="Add"/>
-                <br/>
-                <br/>
-                <ul>
-                    <li>Chat on Whatsapp</li>
-                    <li>Chat on Whatsapp</li>
-                    <li>Chat on Whatsapp</li>
-                    <li>Chat on Whatsapp</li>
-                </ul>
+                <input type="text" id="todo-input" list="todo-list-suggestions" placeholder="Enter Your TODO" />
+                <input type="button" id="todo-add" value="Add Item" />
+                <datalist id="todo-list-suggestions">
+                    <option value="Study"></option>
+                    <option value="Run">Hello</option>
+                    <option value="Office"></option>
+                    <option value="Eat"></option>
+                    <option value="Pack"></option>
+                </datalist>
+                <br />
+                <br />
+                <table id="todo-list">
+                    <!-- code will be dynamically implemented using js -->
+                </table>
 
+            </main>
+            <main id="users" class="nav-tabs">
+                <h1>
+                    <center>Users</center>
+                </h1>
+                <marquee>Welcome to the users page...</marquee>
+            </main>
+            <main id="department" class="nav-tabs">
+                <h1>
+                    <center>Department</center>
+                </h1>
+                <marquee>Welcome to the Department page...</marquee>
+            </main>
+            <main id="batch" class="nav-tabs">
+                <h1>
+                    <center>Batch</center>
+                </h1>
+                <marquee>Our batch is amazing...</marquee>
             </main>
         </div>
         <footer>
@@ -43,3 +65,6 @@
 </body>
 
 </html>
+
+<!-- Scripts -->
+<script type="text/javascript" src="script.js"></script>
