@@ -1,11 +1,12 @@
 body {
     background-color: pink;
-    background-image: url("back.jpg");
+    background-image: url("../images/back.jpg");
 }
 
 * {
     margin: 0px;
     padding: 0px;
+    font-family: Georgia;
 }
 
 ul {
@@ -118,18 +119,103 @@ main #todo-add {
     margin-left: 5px;
     width: 10%;
     height: 30px;
+    border-radius: 8px;
+}
+
+main #todo-add:hover {
+    cursor: pointer;
+    background-color: brown;
+    color: white;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#div-table {
+    overflow: scroll;
+    overflow-x: hidden;
+    max-height: 331px;
 }
 
 table {
-    width: 80%;
+    width: 95%;
     max-height: 77%;
+    table-layout: fixed;
 }
 
 th,
 td {
-    padding-left: 15%;
+    padding-left: 0;
     text-align: center;
-    padding-bottom: 3%;
+    padding-bottom: 1px;
+    padding-top: 1px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table textarea {
+    text-align: center;
+    border: 0;
+    outline: none;
+    font-size: 16;
+    background: transparent;
+    resize: none;
+}
+
+table input:hover {
+    cursor: unset;
+}
+
+button {
+    border-radius: 8px;
+    margin-left: 5px;
+    width: 80;
+    height: 30px;
+}
+
+button:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#del-btn {
+    border: 1px solid red;
+    background-color: white;
+    color: red;
+}
+
+button#del-btn:hover {
+    border: 1px solid brown;
+    background-color: rgb(235, 51, 51);
+    color: white;
+    cursor: pointer;
+}
+
+button#edit-btn {
+    border: 1px solid goldenrod;
+    background-color: white;
+}
+
+button#edit-btn:hover {
+    border: 1px solid brown;
+    background-color: goldenrod;
+    color: white;
+    cursor: pointer;
+}
+
+button#save-btn {
+    border: 1px solid green;
+    background-color: white;
+}
+
+button#save-btn:hover {
+    border: 1px solid brown;
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
+
+.images:hover {
+    cursor: pointer;
 }
 
 

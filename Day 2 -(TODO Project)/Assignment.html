@@ -2,7 +2,7 @@
 
 <head>
     <title>Project</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
@@ -22,40 +22,42 @@
             </nav>
 
             <main id="home" class="nav-tabs">
-                <h3>List</h3>
+                <h3>TODO List</h3>
                 <input type="text" id="todo-input" list="todo-list-suggestions" placeholder="Enter Your TODO" />
                 <input type="button" id="todo-add" value="Add Item" />
                 <datalist id="todo-list-suggestions">
                     <option value="Study"></option>
-                    <option value="Run">Hello</option>
+                    <option value="Run"></option>
                     <option value="Office"></option>
                     <option value="Eat"></option>
                     <option value="Pack"></option>
                 </datalist>
                 <br />
                 <br />
-                <table id="todo-list">
-                    <!-- code will be dynamically implemented using js -->
-                </table>
+                <div id="div-table">
+                    <table id="todo-list">
+                        <!-- code will be dynamically implemented using js -->
+                    </table>
+                </div>
 
             </main>
             <main id="users" class="nav-tabs">
                 <h1>
                     <center>Users</center>
                 </h1>
-                <marquee>Welcome to the users page...</marquee>
+                Welcome to the users page...
             </main>
             <main id="department" class="nav-tabs">
                 <h1>
                     <center>Department</center>
                 </h1>
-                <marquee>Welcome to the Department page...</marquee>
+                Welcome to the Department page...
             </main>
             <main id="batch" class="nav-tabs">
                 <h1>
                     <center>Batch</center>
                 </h1>
-                <marquee>Our batch is amazing...</marquee>
+                Our batch is amazing...
             </main>
         </div>
         <footer>
@@ -67,4 +69,4 @@
 </html>
 
 <!-- Scripts -->
-<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
