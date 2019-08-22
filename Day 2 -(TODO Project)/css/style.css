@@ -160,6 +160,7 @@ table textarea {
     font-size: 16;
     background: transparent;
     resize: none;
+    width: 95%;
 }
 
 table input:hover {

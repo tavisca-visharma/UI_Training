@@ -1,23 +1,23 @@
 // Script code for TODO Project
 
 let todoSuggestions = [];
-let Counter;
 let previousText = "";
 
-function makeCounter() {
-    let count = 0;
-    return function() {
-        return ++count;
-    }
-}
 
 (function onLoad() {
     window.addEventListener("load", makeTodoListSuggetions);
     let addButton = document.querySelector("#todo-add");
     addButton.addEventListener("click", addItem);
+    let input = document.getElementById("todo-input");
+    input.addEventListener("keyup", function(event) {
+        if (event.keyCode == 13) {
+            event.preventDefault();
+            addItem();
+        }
+    })
     let searchButton = document.querySelector("#todo-search");
     searchButton.addEventListener("click", search);
-    Counter = makeCounter();
+    window.addEventListener("beforeunload", addToLocalStorage);
 })();
 
 function hideAllViews() {
@@ -34,9 +34,11 @@ function setView(elementToBeViewed) {
 }
 
 function makeTodoListSuggetions() {
-    let datalist = document.getElementById("todo-list-suggestions");
+    // let datalist = document.getElementById("todo-list-suggestions");
+    todoSuggestions = localStorage.getItem("suggestions_history").split(",");
     for (let i = 0; i < todoSuggestions.length; i++) {
-        addItem(todoSuggestions[i]);
+        addItemInSearchList(todoSuggestions[i]);
+        console.log(todoSuggestions);
     }
 }
 
@@ -52,12 +54,15 @@ function isItemExists(itemName) {
 }
 
 function addItem() {
-    let itemName = document.getElementById("todo-input").value;
+    let itemInput = document.getElementById("todo-input");
+    let itemName = itemInput.value;
     if (itemName.trim().length !== 0) {
         if (isItemExists(itemName) == false) {
             addItemInSearchList(itemName);
-            addItemInDisplayList(itemName);
+            todoSuggestions.push(itemName);
         }
+        addItemInDisplayList(itemName);
+        itemInput.value = "";
     }
 }
 
@@ -220,7 +225,7 @@ function saveItem() {
     toggleButtonsDisplay(buttons);
     let newText = textarea.value;
     if (isItemExists(newText) == false) {
-        removeItemFromSearchList(previousText);
+        // removeItemFromSearchList(previousText);
         addItemInSearchList(newText);
     }
 }
@@ -278,4 +283,10 @@ function search() {
             list[i].parentNode.parentNode.style.display = "none";
         }
     }
+}
+
+function addToLocalStorage() {
+    console.log(todoSuggestions);
+
+    localStorage.setItem("suggestions_history", todoSuggestions);
 }
