@@ -115,14 +115,14 @@ main #todo-input {
     height: 30px;
 }
 
-main #todo-add {
+main .todo-btn {
     margin-left: 5px;
     width: 10%;
     height: 30px;
     border-radius: 8px;
 }
 
-main #todo-add:hover {
+main .todo-btn:hover {
     cursor: pointer;
     background-color: brown;
     color: white;

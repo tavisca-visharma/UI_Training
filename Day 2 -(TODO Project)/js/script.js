@@ -1,13 +1,8 @@
-//access input value
-//store in a variable
-
-//create a li
-//add that value variable in li
-//add
-//
+// Script code for TODO Project
 
 let todoSuggestions = [];
 let Counter;
+let previousText = "";
 
 function makeCounter() {
     let count = 0;
@@ -20,6 +15,8 @@ function makeCounter() {
     window.addEventListener("load", makeTodoListSuggetions);
     let addButton = document.querySelector("#todo-add");
     addButton.addEventListener("click", addItem);
+    let searchButton = document.querySelector("#todo-search");
+    searchButton.addEventListener("click", search);
     Counter = makeCounter();
 })();
 
@@ -57,19 +54,30 @@ function isItemExists(itemName) {
 function addItem() {
     let itemName = document.getElementById("todo-input").value;
     if (itemName.trim().length !== 0) {
-        addItemInSearchList(itemName);
-        addItemInDisplayList(itemName);
+        if (isItemExists(itemName) == false) {
+            addItemInSearchList(itemName);
+            addItemInDisplayList(itemName);
+        }
     }
 }
 
 function addItemInSearchList(itemName) {
-    if (isItemExists(itemName) == false) {
-        let datalist = document.getElementById("todo-list-suggestions");
-        let option = document.createElement("option");
-        option.value = itemName;
-        datalist.appendChild(option);
+    let datalist = document.getElementById("todo-list-suggestions");
+    let option = document.createElement("option");
+    option.value = itemName;
+    datalist.appendChild(option);
+}
+
+function removeItemFromSearchList(itemName) {
+    let datalist = document.getElementById("todo-list-suggestions");
+    let optionsList = datalist.getElementsByTagName("option");
+    for (let i = 0; i < optionsList.length; i++) {
+        if (optionsList[i].value.toLowerCase() === itemName.toLowerCase()) {
+            optionsList[i].parentNode.removeChild(optionsList[i]);
+        }
     }
 }
+
 
 function addItemInDisplayList(itemName) {
     let displayList = document.getElementById("todo-list");
@@ -89,14 +97,14 @@ function addItemInDisplayList(itemName) {
 
 function addHeadersInTableList() {
     let header = document.createElement("tr");
-    createHeaderForNumber(header);
+    createHeaderForStatus(header);
     createHeaderForName(header);
     createHeaderForEditButton(header);
     createHeaderForDeleteButton(header);
     return header;
 }
 
-function createHeaderForNumber(header) {
+function createHeaderForStatus(header) {
     let itemNumberHeader = document.createElement("th");
     itemNumberHeader.innerHTML = "Status";
     header.appendChild(itemNumberHeader);
@@ -120,14 +128,13 @@ function createHeaderForDeleteButton(header) {
     header.appendChild(itemDeleteButton);
 }
 
-
 function createUncheckedCheckboxImage(item) {
     let itemdata = document.createElement("td");
     let image = document.createElement("img");
     image.src = "../images/uncheck.png";
     image.width = "20";
     image.height = "20";
-    image.style.display = "inline";
+    image.style.display = "";
     image.className = "images";
     image.addEventListener("click", toggleImageAndStrike);
     itemdata.appendChild(image);
@@ -152,6 +159,7 @@ function createNameToAdd(item, itemName) {
     itemDescription.readOnly = true;
     itemDescription.value = itemName;
     itemDescription.rows = 1;
+    itemDescription.spellcheck = false;
     itemNameToAdd.appendChild(itemDescription);
     item.appendChild(itemNameToAdd);
 }
@@ -162,7 +170,7 @@ function createEditButtonToAdd(item) {
     itemEdit.appendChild(editButton);
     editButton.innerHTML = "Edit";
     editButton.id = "edit-btn";
-    editButton.style.display = "inline";
+    editButton.style.display = "";
     editButton.addEventListener("click", editItem);
     item.appendChild(itemEdit);
     return itemEdit;
@@ -199,6 +207,7 @@ function editItem() {
     let buttons = rowToBeEdited.cells[2].getElementsByTagName("button");
     toggleButtonsDisplay(buttons);
     let textarea = rowToBeEdited.cells[1].getElementsByTagName("textarea")[0];
+    previousText = textarea.value;
     enableTextEditOption(textarea);
 }
 
@@ -209,15 +218,19 @@ function saveItem() {
     disableTextEditOption(textarea);
     let buttons = rowToBeEdited.cells[2].getElementsByTagName("button");
     toggleButtonsDisplay(buttons);
+    let newText = textarea.value;
+    if (isItemExists(newText) == false) {
+        removeItemFromSearchList(previousText);
+        addItemInSearchList(newText);
+    }
 }
 
 function toggleButtonsDisplay(buttons) {
-    console.log(buttons[0].style.display);
-    if (buttons[0].style.display === "inline") {
+    if (buttons[0].style.display === "") {
         buttons[0].style.display = "none";
-        buttons[1].style.display = "inline";
+        buttons[1].style.display = "";
     } else {
-        buttons[0].style.display = "inline";
+        buttons[0].style.display = "";
         buttons[1].style.display = "none";
     }
 }
@@ -238,16 +251,31 @@ function toggleImageAndStrike() {
     let checkbox = this;
     let rowChecksToBeToggled = checkbox.parentNode.parentNode;
     let images = rowChecksToBeToggled.cells[0].getElementsByTagName("img");
-    if (images[0].style.display === "inline") {
+    if (images[0].style.display === "") {
         images[0].style.display = "none";
-        images[1].style.display = "inline";
+        images[1].style.display = "";
         let textarea = rowChecksToBeToggled.cells[1].getElementsByTagName("textarea")[0];
         textarea.style.textDecoration = "line-through red";
 
     } else {
-        images[0].style.display = "inline";
+        images[0].style.display = "";
         images[1].style.display = "none";
         let textarea = rowChecksToBeToggled.cells[1].getElementsByTagName("textarea")[0];
         textarea.style.textDecoration = "none";
+    }
+}
+
+function search() {
+    let inputToBeFiltered = document.getElementById("todo-input")
+    let listToBeFiltered = document.getElementById("todo-list");
+    let str = inputToBeFiltered.value;
+    let list = listToBeFiltered.getElementsByTagName("textarea");
+    for (let i = 0; i < list.length; i++) {
+        let dataString = list[i].value.toLowerCase();
+        if (dataString.search(str) > -1 && dataString.search(str) < dataString.length) {
+            list[i].parentNode.parentNode.style.display = "";
+        } else {
+            list[i].parentNode.parentNode.style.display = "none";
+        }
     }
 }
