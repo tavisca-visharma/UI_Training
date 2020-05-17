@@ -1,14 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Accessing DOM Elements</title>
 	<script type="text/javascript">
+		window.addEventListener("load", baseFunction);
 		
-	</script>
+		function baseFunction() {
+			var btn = document.querySelector("#btn");
+			if(btn !== null)
+				btn.addEventListener("click", showInput);
+		}
 
+		function showInput(){
+			var elem = document.querySelector("#firstName");
+			if(elem !== null){
+				var firstName = elem.value;
+				alert(firstName);
+				elem.style.color = "#ff0344";
+				elem.value = "I have Changed the Text";
+				document.getElementById("displayText").innerHTML = "<h1>" + firstName + "</h1>";
+				createAndRenderElement("div");
+			}
+		}
+
+		function createAndRenderElement(elemName){
+			var elem = document.createElement(elemName);
+			elem.innerHTML = "I have Created the "+ elemName.trim()  +" element <h2><i>dynamically</i>!!!</h2>";
+			elem.setAttribute("class", "content");
+			alert(elem.getAttribute("class"));
+			document.getElementById("displayText").append(elem);
+		}
+
+	</script>
+	<style>
+			.content{
+				border:5px groove #00a22f;
+			}
+
+			h2 {
+				/* display: inline; */
+			}
+		</style>
 
 </head>
 <body>
-
+	<input type="text" name="firstName" id="firstName" />
+	<input type="button" id="btn" value="Show Alert">
+	<div id ="displayText"></div>
 </body>
 </html>
